@@ -1,0 +1,90 @@
+.homeSlide h1 {
+    font-size: 45px;
+    line-height: 55px;
+    margin: 50px 0 20px 0;
+  }
+  .homeSlide p {
+    margin: 20px 0;
+  }
+  .homeSlide ul {
+    position: absolute;
+    bottom: 20px;
+  }
+  .homeSlide ul li {
+    border: 2px solid #b8b7b7;
+    border-radius: 50%;
+    padding: 10px;
+  }
+  .homeSlide ul li button {
+    background: transparent !important;
+    color: transparent !important;
+  }
+  .homeSlide ul li button::before {
+    font-size: 15px !important;
+    color: #0f3460;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    margin: auto;
+  }
+  .right img {
+    width: 80%;
+    margin-top: -50px;
+  }
+  .left {
+    margin-top: -70px;
+    padding: 10rem;
+  }
+  .btn-primary-slide {
+    background: #0f3460;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 10px 25px;
+  }
+  /* Estilos responsive */
+  @media (max-width: 768px) {
+    .homeSlide h1 {
+      font-size: 35px;
+      line-height: 45px;
+      margin: 30px 0 15px 0;
+    }
+    .homeSlide p {
+      margin: 15px 0;
+    }
+    .right img {
+      width: 100%;
+      margin-top: 0;
+    }
+    .left {
+      margin-top: 0;
+      padding: 0;
+    }
+  }
+  
+  @media (max-width: 390px) {
+    .homeSlide h1 {
+      font-size: 20px;
+      line-height: 25px;
+      margin: 0px 0 0px 0;
+    }
+    .homeSlide p {
+      margin: 10px 0;
+      font-size: 10px;
+    }
+    .right img {
+      width: 100%;
+      margin-top: 0;
+    }
+    .left {
+      margin-top: 0;
+      padding: 0;
+    }
+    .btn-primary-slide {
+      
+      font-size: 10px;
+  
+      padding: 5px 15px;
+      margin-bottom: 5rem;
+    }
+  }
