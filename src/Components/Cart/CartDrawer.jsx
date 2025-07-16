@@ -30,7 +30,7 @@ const CartDrawer = ({ isOpen, onClose, cartItems = [], incrementQty, decrementQt
       <div
         className={`position-fixed top-0 end-0 h-100 bg-white shadow-lg d-flex flex-column`}
         style={{
-          width: "25%",
+          width: window.innerWidth < 768 ? "100%" : "25%",
           zIndex: 1050,
           transform: isOpen ? "translateX(0)" : "translateX(100%)",
           transition: "transform 0.3s ease-in-out",
