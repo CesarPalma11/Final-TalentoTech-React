@@ -33,19 +33,19 @@ const handleLogin = (e) => {
 
   return (
     <>
-      {/* Fondo oscuro */}
+     
       <div
         className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"
         style={{ zIndex: 1040 }}
         onClick={onClose}
       />
 
-      {/* Modal centrado */}
+      
       <div
         className="position-fixed top-50 start-50 translate-middle bg-white p-4 rounded shadow"
         style={{ zIndex: 1050, width: "400px", maxWidth: "90%" }}
       >
-        {/* Encabezado */}
+       
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h5 className="mb-0">
             {isLogin ? "Iniciar sesión" : "Crear cuenta"}
@@ -57,9 +57,9 @@ const handleLogin = (e) => {
           />
         </div>
 
-        {/* Formulario */}
+        
         <form onSubmit={handleLogin}>
-          {/* Login */}
+        
           {isLogin ? (
             <>
               <div className="mb-3">
@@ -123,7 +123,7 @@ const handleLogin = (e) => {
           )}
         </form>
 
-        {/* Alternar entre login y registro */}
+       
         <div className="text-center mt-3">
           {isLogin ? (
             <>

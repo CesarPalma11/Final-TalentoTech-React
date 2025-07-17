@@ -12,12 +12,11 @@ const Navbar = ({ cartItems, setCartOpen, openAuthDrawer, user, setUser }) => {
     0
   );
 
-
   const handleLogout = () => {
-  setUser(null);
-  localStorage.removeItem("user");
-  toast.info("Sesión cerrada");
-};
+    setUser(null);
+    localStorage.removeItem("user");
+    toast.info("Sesión cerrada");
+  };
 
   return (
     <>
@@ -69,13 +68,28 @@ const Navbar = ({ cartItems, setCartOpen, openAuthDrawer, user, setUser }) => {
             {user?.rol === "admin" && (
               <span
                 className="fw-semibold text-muted"
-                style={{ fontSize: "0.9rem" , marginRight:"1rem" }}
+                style={{ fontSize: "0.9rem", marginRight: "1rem" }}
               >
                 Admin
               </span>
             )}
             {user && (
-              <button className="btn btn-sm btn-outline-danger ms-2" onClick={handleLogout}>Cerrar sesión</button>
+              <button
+                className="btn btn-sm btn-outline-danger ms-2"
+                onClick={handleLogout}
+              >
+                Cerrar sesión
+              </button>
+            )}
+
+            {user?.rol === "admin" && (
+              <Link
+                to="/admin"
+                className="btn btn-outline-primary btn-sm me-2"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Dashboard
+              </Link>
             )}
 
             <div
@@ -129,6 +143,16 @@ const Navbar = ({ cartItems, setCartOpen, openAuthDrawer, user, setUser }) => {
           >
             Contacto
           </Link>
+
+          {user?.rol === "admin" && (
+            <Link
+              to="/admin"
+              className="fw-semibold text-primary"
+              onClick={() => setMenu(false)}
+            >
+              Dashboard
+            </Link>
+          )}
         </div>
       </div>
     </>

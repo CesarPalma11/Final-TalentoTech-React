@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
 
-const FeaturedProducts = ({ products, addToCart, user }) => {
+const FeaturedProducts = ({ products, addToCart, user, onDelete }) => {
   const handleAddToCart = (product) => {
     addToCart(product);
     toast.success(`${product.nombre} se agregó al carrito!`, {
@@ -59,12 +59,21 @@ const FeaturedProducts = ({ products, addToCart, user }) => {
                 </button>
 
                 {user?.rol === "admin" && (
-                  <Link
-                    to={`/admin/editar/${product.id}`}
-                    className="btn btn-warning btn-sm mt-2"
-                  >
-                    Editar
-                  </Link>
+                  <>
+                    <Link
+                      to={`/admin/editar/${product.id}`}
+                      className="btn btn-warning btn-sm mt-2 me-2"
+                    >
+                      Editar
+                    </Link>
+
+                    <button
+                      className="btn btn-danger btn-sm mt-2"
+                      onClick={() => onDelete(product)}
+                    >
+                      Eliminar
+                    </button>
+                  </>
                 )}
               </div>
             </div>

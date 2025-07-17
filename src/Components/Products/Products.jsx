@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FeaturedProducts from '../Home/FeaturedProducts';
 
-const Productos = ({ addToCart, user }) => {
+const Productos = ({ addToCart, user, onDelete}) => {
   const [productos, setProductos] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [precioMax, setPrecioMax] = useState('');
   const [modelo, setModelo] = useState('');
+
+  
+
+
+
 
   useEffect(() => {
     axios
@@ -38,6 +43,11 @@ const Productos = ({ addToCart, user }) => {
   const handleAddToCart = (producto) => {
     addToCart(producto);
   };
+
+
+
+
+
 
   return (
     <div className="container py-5" style={{ marginTop: '5rem' }}>
@@ -87,6 +97,7 @@ const Productos = ({ addToCart, user }) => {
             products={filteredProducts}
             addToCart={handleAddToCart}
             user={user}
+            onDelete={(product) => onDelete(product)}
           />
         </section>
       </div>

@@ -13,11 +13,21 @@ import Footer from "./Components/Footer/Footer";
 import ProductDetail from "./Components/Products/ProductDetail";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { toast } from "react-toastify";
 import RutaPrivadaAdmin from "./Components/Admin/RutaPrivadaAdmin";
 import EditarProducto from "./Components/Products/EditProducts";
+import AdminDashboard from "./Components/Products/AdminDashboard";
 import { useEffect } from "react";
+import DeleteModal from "./Components/Products/DeleteModal";
+import AgregarProducto from "./Components/Products/AddProduct";
+import AddProductDrawer from "./Components/Products/AddProductDrawer";
 
 function App() {
+  const [showAddDrawer, setShowAddDrawer] = useState(false);
+
+  const openAddDrawer = () => setShowAddDrawer(true);
+  const closeAddDrawer = () => setShowAddDrawer(false);
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem("cartItems");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -29,12 +39,36 @@ function App() {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
+  const [productos, setProductos] = useState([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const openDeleteModal = (product) => {
+    setSelectedProduct(product);
+    setShowDeleteModal(true);
+  };
 
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false);
+    setSelectedProduct(null);
+  };
 
-useEffect(() => {
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-}, [cartItems]);
+  const confirmDelete = (id) => {
+    axios
+      .delete(
+        `https://686d213dc9090c495385500c.mockapi.io/ecommerce/productos/${id}`
+      )
+      .then(() => {
+        toast.success("Producto eliminado");
+        setProductos(productos.filter((p) => p.id !== id));
+      })
+      .catch(() => toast.error("Error al eliminar producto"))
+      .finally(() => closeDeleteModal());
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (producto) => {
     const existingProduct = cartItems.find((item) => item.id === producto.id);
@@ -88,6 +122,7 @@ useEffect(() => {
         openAuthDrawer={() => setIsAuthOpen(true)}
         user={user}
         setUser={setUser}
+        openAddDrawer={openAddDrawer}
       />
 
       <CartDrawer
@@ -104,7 +139,18 @@ useEffect(() => {
         onClose={() => setIsAuthOpen(false)}
         setUser={setUser}
       />
+      <DeleteModal
+        show={showDeleteModal}
+        onClose={closeDeleteModal}
+        onConfirm={confirmDelete}
+        product={selectedProduct}
+      />
 
+      <AddProductDrawer
+        show={showAddDrawer}
+        onClose={closeAddDrawer}
+        onProductAdded={() => window.location.reload()} 
+      />
       <Routes>
         <Route path="/" element={<Home addToCart={addToCart} user={user} />} />
         <Route path="/about" element={<About />} />
@@ -112,7 +158,14 @@ useEffect(() => {
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/productos"
-          element={<Productos addToCart={addToCart} user={user} />}
+          element={
+            <Productos
+              addToCart={addToCart}
+              user={user}
+              onDelete={(product) => openDeleteModal(product)}
+              setProductos={(newList) => setProductos(newList)}
+            />
+          }
         />
 
         <Route
@@ -128,6 +181,10 @@ useEffect(() => {
             </RutaPrivadaAdmin>
           }
         />
+
+        <Route path="/agregar-producto" element={<AgregarProducto />} />
+
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
 
       <Footer />
