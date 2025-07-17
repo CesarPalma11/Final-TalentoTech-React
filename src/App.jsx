@@ -17,7 +17,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import RutaPrivadaAdmin from "./Components/Admin/RutaPrivadaAdmin";
 import EditarProducto from "./Components/Products/EditProducts";
-import AdminDashboard from "./Components/Products/AdminDashboard";
+
 import { useEffect } from "react";
 import DeleteModal from "./Components/Products/DeleteModal";
 import AgregarProducto from "./Components/Products/AddProduct";
@@ -112,6 +112,8 @@ function App() {
     setIsCartOpen(false);
   };
 
+  
+
   return (
     <>
       <Navbar
@@ -184,7 +186,7 @@ function App() {
 
         <Route path="/agregar-producto" element={<AgregarProducto />} />
 
-        <Route path="/admin" element={<AdminDashboard />} />
+        
       </Routes>
 
       <Footer />

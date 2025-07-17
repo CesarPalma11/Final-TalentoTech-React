@@ -82,15 +82,7 @@ const Navbar = ({ cartItems, setCartOpen, openAuthDrawer, user, setUser }) => {
               </button>
             )}
 
-            {user?.rol === "admin" && (
-              <Link
-                to="/admin"
-                className="btn btn-outline-primary btn-sm me-2"
-                style={{ whiteSpace: "nowrap" }}
-              >
-                Dashboard
-              </Link>
-            )}
+           
 
             <div
               className="position-relative"
@@ -144,15 +136,6 @@ const Navbar = ({ cartItems, setCartOpen, openAuthDrawer, user, setUser }) => {
             Contacto
           </Link>
 
-          {user?.rol === "admin" && (
-            <Link
-              to="/admin"
-              className="fw-semibold text-primary"
-              onClick={() => setMenu(false)}
-            >
-              Dashboard
-            </Link>
-          )}
         </div>
       </div>
     </>

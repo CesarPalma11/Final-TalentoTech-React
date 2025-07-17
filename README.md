@@ -1,14 +1,29 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛒 Ecommerce React App
 
-Currently, two official plugins are available:
+Esta es una aplicación de ecommerce desarrollada con **React** que permite a los usuarios explorar productos, filtrarlos por modelo o precio, agregarlos al carrito y realizar acciones administrativas como agregar, editar o eliminar productos. Utiliza **MockAPI** como backend de prueba, junto con **React Router**, **Bootstrap 5**, `react-toastify`, `react-helmet-async` y otras librerías modernas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Características
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Listado de productos dinámico desde una API
+- Filtros por precio máximo y modelo
+- Agregado al carrito con notificaciones
+- Administración: agregar, editar y eliminar productos
+- Formularios validados y centrados con `min-height: 100vh`
+- Uso de `Drawer` para login, registro y confirmaciones
+- SEO básico con `React Helmet`
 
-https://www.youtube.com/watch?v=-x2SRYuhSOY   (min 1:18:28)
+---
+
+## 🧰 Tecnologías utilizadas
+
+- React
+- React Router DOM
+- Bootstrap 5
+- React Icons
+- React Toastify
+- React Helmet Async
+- Axios
+- MockAPI
