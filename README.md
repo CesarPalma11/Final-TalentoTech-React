@@ -27,3 +27,6 @@ Esta es una aplicación de ecommerce desarrollada con **React** que permite a lo
 - React Helmet Async
 - Axios
 - MockAPI
+
+
+Cuenta para acceder como Administrador - En login: admin@admin.com , contraseña: admin123
