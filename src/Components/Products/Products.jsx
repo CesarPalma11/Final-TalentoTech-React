@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { Link } from "react-router-dom"; // corregí esto también
-import { Helmet } from "react-helmet-async"; // 🚨 Importante
+import { Link } from "react-router-dom";
+
 
 import FeaturedProducts from "../Home/FeaturedProducts";
 
@@ -49,11 +49,7 @@ const Productos = ({ addToCart, user, onDelete }) => {
 
   return (
     <>
-      {/* 👇 React Helmet acá */}
-      <Helmet>
-        <title>Productos - Mi Tienda</title>
-        <meta name="description" content="Explorá todos nuestros productos y encontrá lo que estás buscando." />
-      </Helmet>
+     
 
       <div className="container py-5" style={{ marginTop: "5rem" }}>
         <div className="d-flex" style={{ gap: "1rem" }}>
